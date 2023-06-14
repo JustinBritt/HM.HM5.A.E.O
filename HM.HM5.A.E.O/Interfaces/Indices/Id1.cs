@@ -11,6 +11,6 @@
         ImmutableList<Id1IndexElement> Value { get; }
 
         Id1IndexElement GetElementAt(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }
