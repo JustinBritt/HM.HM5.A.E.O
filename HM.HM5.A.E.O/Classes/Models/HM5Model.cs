@@ -245,7 +245,7 @@
                     this.s.GetElementAt(x.Item1),
                     this.r.GetElementAt(x.Item2),
                     this.t.GetElementAt(x.Item3),
-                    (FhirBoolean)x.Item4))
+                    x.Item4))
                 .ToImmutableList());
 
             // S1
@@ -280,7 +280,7 @@
                 .Select(x => parameterElementsAbstractFactory.CreateyParameterElementFactory().Create(
                     this.s.GetElementAt(x.Item1),
                     this.r.GetElementAt(x.Item2),
-                    (FhirBoolean)x.Item3))
+                    x.Item3))
                 .ToImmutableList());
 
             // γ(r, t)
@@ -289,7 +289,7 @@
                 .Select(x => parameterElementsAbstractFactory.CreateγParameterElementFactory().Create(
                     this.r.GetElementAt(x.Item1),
                     this.t.GetElementAt(x.Item2),
-                    (FhirBoolean)x.Item3))
+                    x.Item3))
                 .ToImmutableList());
 
             // μ(s, Λ)

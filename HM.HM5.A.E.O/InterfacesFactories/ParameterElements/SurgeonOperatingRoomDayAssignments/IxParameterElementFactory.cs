@@ -11,6 +11,6 @@
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
             ItIndexElement tIndexElement,
-            FhirBoolean value);
+            INullableValue<bool> value);
     }
 }

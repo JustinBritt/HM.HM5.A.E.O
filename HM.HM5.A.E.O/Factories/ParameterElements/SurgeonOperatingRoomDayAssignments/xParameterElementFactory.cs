@@ -23,7 +23,7 @@
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
             ItIndexElement tIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             IxParameterElement parameterElement = null;
 

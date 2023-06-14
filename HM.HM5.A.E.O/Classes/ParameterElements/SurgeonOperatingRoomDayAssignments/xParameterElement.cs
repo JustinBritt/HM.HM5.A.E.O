@@ -15,7 +15,7 @@
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
             ItIndexElement tIndexElement,
-            FhirBoolean value)
+            INullableValue<bool> value)
         {
             this.sIndexElement = sIndexElement;
 
@@ -32,6 +32,6 @@
 
         public ItIndexElement tIndexElement { get; }
 
-        public FhirBoolean Value { get; }
+        public INullableValue<bool> Value { get; }
     }
 }
