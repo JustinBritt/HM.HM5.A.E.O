@@ -11,7 +11,7 @@
     using HM.HM5.A.E.O.Interfaces.IndexElements;
     using HM.HM5.A.E.O.Interfaces.ParameterElements.SurgicalSpecialties;
 
-    public interface ISurgicalSpecialtiesVisitor<TKey, TValue>
+    public interface ISurgicalSpecialtiesVisitor<TKey, TValue> : IVisitor<KeyValuePair<TKey, TValue>>
         where TKey : Organization
         where TValue : IImmutableSet<Organization>
     {
