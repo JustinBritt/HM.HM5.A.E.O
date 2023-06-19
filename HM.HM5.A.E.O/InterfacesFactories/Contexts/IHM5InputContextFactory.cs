@@ -6,8 +6,10 @@
 
     using Hl7.Fhir.Model;
 
-    using HM.HM5.A.E.O.Interfaces.Contexts;
+    using NGenerics.DataStructures.Trees;
 
+    using HM.HM5.A.E.O.Interfaces.Contexts;
+    
     public interface IHM5InputContextFactory
     {
         IHM5InputContext Create(
@@ -16,7 +18,7 @@
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             Bundle operatingRooms,
             Bundle surgeons,
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> planningHorizon,
+            RedBlackTree<INullableValue<int>, FhirDateTime> planningHorizon,
             ImmutableSortedSet<INullableValue<int>> scenarios,
             Duration timeBlockLength,
             ImmutableList<Tuple<Organization, INullableValue<int>, Duration>> surgeonScenarioWeightedAverageSurgicalDurations,

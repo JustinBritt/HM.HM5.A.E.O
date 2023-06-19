@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM5.A.E.O.Classes.Contexts;
     using HM.HM5.A.E.O.Interfaces.Contexts;
     using HM.HM5.A.E.O.InterfacesFactories.Contexts;
@@ -26,7 +28,7 @@
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             Bundle operatingRooms,
             Bundle surgeons,
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> planningHorizon,
+            RedBlackTree<INullableValue<int>, FhirDateTime> planningHorizon,
             ImmutableSortedSet<INullableValue<int>> scenarios,
             Duration timeBlockLength,
             ImmutableList<Tuple<Organization, INullableValue<int>, Duration>> surgeonScenarioWeightedAverageSurgicalDurations,

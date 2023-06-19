@@ -5,6 +5,7 @@
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+    using NGenerics.DataStructures.Trees;
 
     public interface IHM5InputContext
     {
@@ -18,7 +19,7 @@
 
         Bundle Surgeons { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> PlanningHorizon { get; }
+        RedBlackTree<INullableValue<int>, FhirDateTime> PlanningHorizon { get; }
 
         ImmutableSortedSet<INullableValue<int>> Scenarios { get; }
 
