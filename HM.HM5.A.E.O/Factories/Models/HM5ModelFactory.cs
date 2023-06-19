@@ -20,6 +20,7 @@
 
         public IHM5Model Create(
             ICalculationsAbstractFactory calculationsAbstractFactory,
+            IComparersAbstractFactory comparersAbstractFactory,
             IConstraintElementsAbstractFactory constraintElementsAbstractFactory,
             IConstraintsAbstractFactory constraintsAbstractFactory,
             ICrossJoinElementsAbstractFactory crossJoinElementsAbstractFactory,
@@ -39,6 +40,7 @@
             {
                 model = new HM5Model(
                     calculationsAbstractFactory,
+                    comparersAbstractFactory,
                     constraintElementsAbstractFactory,
                     constraintsAbstractFactory,
                     crossJoinElementsAbstractFactory,
