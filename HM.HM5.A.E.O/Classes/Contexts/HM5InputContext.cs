@@ -8,9 +8,10 @@
 
     using Hl7.Fhir.Model;
 
-    using HM.HM5.A.E.O.Interfaces.Contexts;
     using NGenerics.DataStructures.Trees;
 
+    using HM.HM5.A.E.O.Interfaces.Contexts;
+    
     public sealed class HM5InputContext : IHM5InputContext
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -26,7 +27,7 @@
             Duration timeBlockLength,
             RedBlackTree<Organization, RedBlackTree<INullableValue<int>, Duration>> surgeonScenarioWeightedAverageSurgicalDurations,
             RedBlackTree<Organization, INullableValue<int>> surgeonLengthOfStayMaximums,
-            ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>>> surgeonScenarioMaximumNumberPatients,
+            RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> surgeonScenarioMaximumNumberPatients,
             ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> surgeonDayScenarioLengthOfStayProbabilities,
             INullableValue<int> numberDaysPerWeek,
             ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> surgeonOperatingRoomDayAssignments,
@@ -101,7 +102,7 @@
 
         public RedBlackTree<Organization, INullableValue<int>> SurgeonLengthOfStayMaximums { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>>> SurgeonScenarioMaximumNumberPatients { get; }
+        public RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<int>>> SurgeonScenarioMaximumNumberPatients { get; }
 
         public ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> SurgeonDayScenarioLengthOfStayProbabilities { get; }
 
