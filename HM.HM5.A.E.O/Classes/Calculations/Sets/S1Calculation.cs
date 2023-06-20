@@ -30,7 +30,7 @@
             IΔ Δ)
         {
             return S1Factory.Create(
-                r.Value
+                r.Value.Values
                 .Select(
                     i => Tuple.Create(
                         i,
