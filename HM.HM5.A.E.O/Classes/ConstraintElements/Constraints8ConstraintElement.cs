@@ -34,7 +34,7 @@
                         tIndexElement.Key + d2IndexElement.Value.Value.Value)];
 
             Expression RHS = Expression.Sum(
-                d1.Value
+                d1.Value.Values
                 .Select(
                    y => x.GetElementAtAsint(
                        sIndexElement,

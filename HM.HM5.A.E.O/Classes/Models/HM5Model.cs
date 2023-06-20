@@ -64,6 +64,7 @@
 
             // d1
             this.d1 = indicesAbstractFactory.Created1Factory().Create(
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.Context.Weekdays
                 .Select(x => indexElementsAbstractFactory.Created1IndexElementFactory().Create(x))
                 .ToImmutableList());
@@ -127,13 +128,13 @@
             // rd1
             this.rd1 = crossJoinsAbstractFactory.Createrd1Factory().Create(
                 this.r.Value.Values
-                .SelectMany(b => this.d1.Value, (a, b) => crossJoinElementsAbstractFactory.Createrd1CrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.d1.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createrd1CrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // rd1d2
             this.rd1d2 = crossJoinsAbstractFactory.Createrd1d2Factory().Create(
                 this.r.Value.Values
-                .SelectMany(b => this.d1.Value, (a, b) => crossJoinElementsAbstractFactory.Createrd1CrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.d1.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createrd1CrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.d2.Value, (a, b) => crossJoinElementsAbstractFactory.Createrd1d2CrossJoinElementFactory().Create(a.rIndexElement, a.d1IndexElement, b))
                 .ToImmutableList());
 
@@ -404,7 +405,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.r.Value.Values, 
-                    indexSet2: this.d1.Value, 
+                    indexSet2: this.d1.Value.Values, 
                     indexSet3: this.d2.Value, 
                     lowerBoundGenerator: (a, b, c) => 0, 
                     upperBoundGenerator: (a, b, c) => 1, 
