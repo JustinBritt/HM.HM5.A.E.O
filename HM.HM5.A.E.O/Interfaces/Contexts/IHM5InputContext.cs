@@ -10,7 +10,7 @@
     {
         ImmutableSortedSet<INullableValue<int>> Weekdays { get; }
 
-        ImmutableList<Tuple<Organization, ImmutableList<Organization>>> SurgicalSpecialties { get; }
+        RedBlackTree<Organization, ImmutableSortedSet<Organization>> SurgicalSpecialties { get; }
 
         ImmutableSortedSet<INullableValue<int>> LengthOfStayDays { get; }
 
