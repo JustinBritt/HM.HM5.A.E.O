@@ -24,7 +24,7 @@
             IxHat xHat)
         {
             Expression LHS = Expression.Sum(
-                s.Value
+                s.Value.Values
                 .Select(
                     y => xHat.Value[y, rIndexElement, tIndexElement]));
 

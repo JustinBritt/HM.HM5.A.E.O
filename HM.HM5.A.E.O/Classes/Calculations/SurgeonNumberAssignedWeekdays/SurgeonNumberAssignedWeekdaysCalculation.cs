@@ -28,7 +28,7 @@
             IxHat xHat)
         {
             return surgeonNumberAssignedWeekdaysFactory.Create(
-                s.Value
+                s.Value.Values
                 .Select(w => surgeonNumberAssignedWeekdaysResultElementCalculation.Calculate(
                     surgeonNumberAssignedWeekdaysResultElementFactory,
                     w,
