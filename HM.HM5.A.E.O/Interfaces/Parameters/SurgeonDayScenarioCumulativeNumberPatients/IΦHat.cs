@@ -1,13 +1,13 @@
 ﻿namespace HM.HM5.A.E.O.Interfaces.Parameters.SurgeonDayScenarioCumulativeNumberPatients
 {
-    using System.Collections.Immutable;
+    using NGenerics.DataStructures.Trees;
 
     using HM.HM5.A.E.O.Interfaces.IndexElements;
     using HM.HM5.A.E.O.Interfaces.ParameterElements.SurgeonDayScenarioCumulativeNumberPatients;
 
     public interface IΦHat
     {
-        ImmutableList<IΦHatParameterElement> Value { get; }
+        RedBlackTree<IsIndexElement, RedBlackTree<IlIndexElement, RedBlackTree<IΛIndexElement, IΦHatParameterElement>>> Value { get; }
 
         decimal GetElementAtAsdecimal(
             IsIndexElement sIndexElement,

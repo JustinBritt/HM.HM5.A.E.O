@@ -1,7 +1,6 @@
 ﻿namespace HM.HM5.A.E.O.Interfaces.Contexts
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -47,7 +46,7 @@
 
         RedBlackTree<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> SurgeonScenarioMaximumNumberPatientStandardDeviations { get; }
 
-        ImmutableList<Tuple<Organization, INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> SurgeonDayScenarioCumulativeNumberPatients { get; }
+        RedBlackTree<Organization, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>> SurgeonDayScenarioCumulativeNumberPatients { get; }
 
         INullableValue<int> MaximumNumberRecoveryWardBeds { get; }
     }
