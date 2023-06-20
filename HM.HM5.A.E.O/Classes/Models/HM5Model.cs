@@ -71,9 +71,10 @@
 
             // d2
             this.d2 = indicesAbstractFactory.Created2Factory().Create(
-               this.Context.Weekdays
-               .Select(x => indexElementsAbstractFactory.Created2IndexElementFactory().Create(x))
-               .ToImmutableList());
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
+                this.Context.Weekdays
+                .Select(x => indexElementsAbstractFactory.Created2IndexElementFactory().Create(x))
+                .ToImmutableList());
 
             // j
             this.j = indicesAbstractFactory.CreatejFactory().Create(
@@ -135,13 +136,13 @@
             this.rd1d2 = crossJoinsAbstractFactory.Createrd1d2Factory().Create(
                 this.r.Value.Values
                 .SelectMany(b => this.d1.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createrd1CrossJoinElementFactory().Create(a, b))
-                .SelectMany(b => this.d2.Value, (a, b) => crossJoinElementsAbstractFactory.Createrd1d2CrossJoinElementFactory().Create(a.rIndexElement, a.d1IndexElement, b))
+                .SelectMany(b => this.d2.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createrd1d2CrossJoinElementFactory().Create(a.rIndexElement, a.d1IndexElement, b))
                 .ToImmutableList());
 
             // rd2
             this.rd2 = crossJoinsAbstractFactory.Createrd2Factory().Create(
                 this.r.Value.Values
-                .SelectMany(b => this.d2.Value, (a, b) => crossJoinElementsAbstractFactory.Createrd2CrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.d2.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createrd2CrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // rt
@@ -161,14 +162,14 @@
             this.srd2 = crossJoinsAbstractFactory.Createsrd2Factory().Create(
                this.s.Value.Values
                .SelectMany(b => this.r.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
-               .SelectMany(b => this.d2.Value, (a, b) => crossJoinElementsAbstractFactory.Createsrd2CrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
+               .SelectMany(b => this.d2.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createsrd2CrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                .ToImmutableList());
 
             // srd2t
             this.srd2t = crossJoinsAbstractFactory.Createsrd2tFactory().Create(
                this.s.Value.Values
                .SelectMany(b => this.r.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesrCrossJoinElementFactory().Create(a, b))
-               .SelectMany(b => this.d2.Value, (a, b) => crossJoinElementsAbstractFactory.Createsrd2CrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
+               .SelectMany(b => this.d2.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createsrd2CrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, b))
                .SelectMany(b => this.t.Value.Values, (a, b) => crossJoinElementsAbstractFactory.Createsrd2tCrossJoinElementFactory().Create(a.sIndexElement, a.rIndexElement, a.d2IndexElement, b))
                .ToImmutableList());
 
@@ -406,7 +407,7 @@
                     model: this.Model, 
                     indexSet1: this.r.Value.Values, 
                     indexSet2: this.d1.Value.Values, 
-                    indexSet3: this.d2.Value, 
+                    indexSet3: this.d2.Value.Values, 
                     lowerBoundGenerator: (a, b, c) => 0, 
                     upperBoundGenerator: (a, b, c) => 1, 
                     variableTypeGenerator: (a, b, c) => VariableType.Binary)); 

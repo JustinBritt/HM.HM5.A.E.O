@@ -22,7 +22,7 @@
             Iα α)
         {
             Expression LHS = Expression.Sum(
-                d2.Value
+                d2.Value.Values
                 .Select(
                    y => α.Value[rIndexElement, d1IndexElement, y]));
 
