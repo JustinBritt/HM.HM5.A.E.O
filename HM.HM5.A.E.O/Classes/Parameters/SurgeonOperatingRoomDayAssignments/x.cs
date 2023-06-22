@@ -19,7 +19,7 @@
             this.Value = value;
         }
 
-        public ImmutableList<IxParameterElement> Value { get; }
+        private ImmutableList<IxParameterElement> Value { get; }
 
         public int GetElementAtAsint(
             IsIndexElement sIndexElement,
@@ -30,6 +30,11 @@
                 .Where(y => y.sIndexElement == sIndexElement && y.rIndexElement == rIndexElement && y.tIndexElement == tIndexElement)
                 .Select(y => y.Value.Value.Value ? 1 : 0)
                 .SingleOrDefault();
+        }
+
+        public ImmutableList<IxParameterElement> GetElementsAsImmutableList()
+        {
+            return this.Value;
         }
     }
 }

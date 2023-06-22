@@ -7,11 +7,11 @@
 
     public interface Ix
     {
-        ImmutableList<IxParameterElement> Value { get; }
-
         int GetElementAtAsint(
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
             ItIndexElement tIndexElement);
+
+        ImmutableList<IxParameterElement> GetElementsAsImmutableList();
     }
 }
