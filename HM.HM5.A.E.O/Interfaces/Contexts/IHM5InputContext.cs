@@ -1,6 +1,5 @@
 ﻿namespace HM.HM5.A.E.O.Interfaces.Contexts
 {
-    using System;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -34,7 +33,7 @@
 
         INullableValue<int> NumberDaysPerWeek { get; }
 
-        ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> SurgeonOperatingRoomDayAssignments { get; }
+        RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> SurgeonOperatingRoomDayAssignments { get; }
 
         RedBlackTree<Organization, RedBlackTree<Location, INullableValue<bool>>> SurgeonOperatingRoomAssignments { get; }
 

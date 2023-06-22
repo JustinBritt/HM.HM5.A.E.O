@@ -1,11 +1,13 @@
 ﻿namespace HM.HM5.A.E.O.Factories.Parameters.SurgeonOperatingRoomDayAssignments
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM5.A.E.O.Classes.Parameters.SurgeonOperatingRoomDayAssignments;
+    using HM.HM5.A.E.O.Interfaces.IndexElements;
     using HM.HM5.A.E.O.Interfaces.ParameterElements.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.Interfaces.Parameters.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Parameters.SurgeonOperatingRoomDayAssignments;
@@ -19,7 +21,7 @@
         }
 
         public Ix Create(
-            ImmutableList<IxParameterElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxParameterElement>>> value)
         {
             Ix parameter = null;
 

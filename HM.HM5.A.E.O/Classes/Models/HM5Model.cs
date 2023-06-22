@@ -271,14 +271,17 @@
 
             // x(s, r, t)
             // Must be populated before S1
+            ISurgeonOperatingRoomDayAssignmentsOuterVisitor<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> surgeonOperatingRoomDayAssignmentsOuterVisitor = new HM.HM5.A.E.O.Visitors.Contexts.SurgeonOperatingRoomDayAssignmentsOuterVisitor<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>>(
+                parameterElementsAbstractFactory.CreatexParameterElementFactory(),
+                this.r,
+                this.s,
+                this.t);
+
+            this.Context.SurgeonOperatingRoomDayAssignments.AcceptVisitor(
+                surgeonOperatingRoomDayAssignmentsOuterVisitor);
+
             this.x = parametersAbstractFactory.CreatexFactory().Create(
-                this.Context.SurgeonOperatingRoomDayAssignments
-                .Select(x => parameterElementsAbstractFactory.CreatexParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Item1),
-                    this.r.GetElementAt(x.Item2),
-                    this.t.GetElementAt(x.Item3),
-                    x.Item4))
-                .ToImmutableList());
+                surgeonOperatingRoomDayAssignmentsOuterVisitor.RedBlackTree);
 
             // S1
             this.S1 = calculationsAbstractFactory.CreateS1CalculationFactory().Create().Calculate(
