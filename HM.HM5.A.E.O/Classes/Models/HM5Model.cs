@@ -319,13 +319,16 @@
                 surgeonOperatingRoomAssignmentsOuterVisitor.RedBlackTree);
 
             // γ(r, t)
+            IOperatingRoomDayAssignedAvailabilitiesOuterVisitor<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> operatingRoomDayAssignedAvailabilitiesOuterVisitor = new HM.HM5.A.E.O.Visitors.Contexts.OperatingRoomDayAssignedAvailabilitiesOuterVisitor<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>(
+                parameterElementsAbstractFactory.CreateγParameterElementFactory(),
+                this.r,
+                this.t);
+
+            this.Context.OperatingRoomDayAssignedAvailabilities.AcceptVisitor(
+                operatingRoomDayAssignedAvailabilitiesOuterVisitor);
+
             this.γ = parametersAbstractFactory.CreateγFactory().Create(
-                this.Context.OperatingRoomDayAssignedAvailabilities
-                .Select(x => parameterElementsAbstractFactory.CreateγParameterElementFactory().Create(
-                    this.r.GetElementAt(x.Item1),
-                    this.t.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                operatingRoomDayAssignedAvailabilitiesOuterVisitor.RedBlackTree);
 
             // μ(s, Λ)
             ISurgeonScenarioMaximumNumberPatientMeansOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> surgeonScenarioMaximumNumberPatientMeansOuterVisitor = new HM.HM5.A.E.O.Visitors.Contexts.SurgeonScenarioMaximumNumberPatientMeansOuterVisitor<Organization, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
