@@ -58,7 +58,7 @@
 
             RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> value = obj.Value;
 
-            var innerVisitor = new SurgeonOperatingRoomDayAssignmentsFirstInnerVisitor<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>(
+            ISurgeonOperatingRoomDayAssignmentsFirstInnerVisitor<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>> innerVisitor = new SurgeonOperatingRoomDayAssignmentsFirstInnerVisitor<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>(
                 this.xParameterElementFactory,
                 sIndexElement,
                 this.r,
