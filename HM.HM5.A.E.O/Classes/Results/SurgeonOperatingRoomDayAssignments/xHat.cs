@@ -1,6 +1,5 @@
 ﻿namespace HM.HM5.A.E.O.Classes.Results.SurgeonOperatingRoomDayAssignments
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
@@ -8,46 +7,53 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+    using NGenerics.Patterns.Visitor;
+
     using HM.HM5.A.E.O.Interfaces.IndexElements;
     using HM.HM5.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
-
+    using HM.HM5.A.E.O.InterfacesVisitors.Results.SurgeonOperatingRoomDayAssignments;
+    
     internal sealed class xHat : IxHat
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public xHat(
-            ImmutableList<IxHatResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxHatResultElement>>> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IxHatResultElement> Value { get; }
+        public RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxHatResultElement>>> Value { get; }
 
         public int GetElementAtAsint(
             IsIndexElement sIndexElement,
             IrIndexElement rIndexElement,
             ItIndexElement tIndexElement)
         {
-            return this.Value
-                .Where(x => x.sIndexElement == sIndexElement && x.rIndexElement == rIndexElement && x.tIndexElement == tIndexElement)
-                .Select(x => x.Value ? 1 : 0)
-                .SingleOrDefault();
+            return this.Value[sIndexElement][rIndexElement][tIndexElement].Value ? 1 : 0;
         }
 
-        public ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> GetValueForOutputContext(
+        public ImmutableList<IxHatResultElement> GetElementsAsImmutableList()
+        {
+            return this.Value.SelectMany(w => w.Value).SelectMany(w => w.Value).Select(w => w.Value).ToImmutableList();
+        }
+
+        public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.sIndexElement.Value,
-                    i.rIndexElement.Value,
-                    i.tIndexElement.Value,
-                    nullableValueFactory.Create<bool>(
-                        i.Value)))
-                .ToImmutableList();
+            IxHatOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxHatResultElement>>> xHatOuterVisitor = new HM.HM5.A.E.O.Visitors.Results.SurgeonOperatingRoomDayAssignments.xHatOuterVisitor<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxHatResultElement>>>(
+                nullableValueFactory,
+                new HM.HM5.A.E.O.Classes.Comparers.FhirDateTimeComparer(),
+                new HM.HM5.A.E.O.Classes.Comparers.LocationComparer(),
+                new HM.HM5.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            this.Value.AcceptVisitor(
+                xHatOuterVisitor);
+
+            return xHatOuterVisitor.RedBlackTree;
         }
     }
 }

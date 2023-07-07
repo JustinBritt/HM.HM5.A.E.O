@@ -75,7 +75,9 @@
             IxHat xHat = HM5Model.xHat.GetElementsAt(
                 resultElementsAbstractFactory.CreatexHatResultElementFactory(),
                 resultsAbstractFactory.CreatexHatFactory(),
-                HM5Model.srt);
+                HM5Model.r,
+                HM5Model.s,
+                HM5Model.t);
 
             this.SurgeonOperatingRoomDayAssignments = xHat
                 .GetValueForOutputContext(
@@ -354,7 +356,7 @@
 
         public ImmutableList<Tuple<FhirDateTime, INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardUtilizationVariances { get; }
 
-        public ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> SurgeonOperatingRoomDayAssignments { get; }
+        public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> SurgeonOperatingRoomDayAssignments { get; }
 
         public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<bool>>> SurgeonDayAssignments { get; }
     }

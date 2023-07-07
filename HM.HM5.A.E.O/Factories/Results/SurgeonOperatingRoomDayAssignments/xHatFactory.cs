@@ -1,11 +1,13 @@
 ﻿namespace HM.HM5.A.E.O.Factories.Results.SurgeonOperatingRoomDayAssignments
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using HM.HM5.A.E.O.Classes.Results.SurgeonOperatingRoomDayAssignments;
+    using HM.HM5.A.E.O.Interfaces.IndexElements;
     using HM.HM5.A.E.O.Interfaces.ResultElements.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Results.SurgeonOperatingRoomDayAssignments;
@@ -19,7 +21,7 @@
         }
 
         public IxHat Create(
-            ImmutableList<IxHatResultElement> value)
+            RedBlackTree<IsIndexElement, RedBlackTree<IrIndexElement, RedBlackTree<ItIndexElement, IxHatResultElement>>> value)
         {
             IxHat result = null;
 
