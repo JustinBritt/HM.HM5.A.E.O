@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using OPTANO.Modeling.Optimization;
 
     using HM.HM5.A.E.O.InterfacesAbstractFactories;
@@ -18,7 +20,7 @@
     using HM.HM5.A.E.O.Interfaces.Results.ScenarioUtilizedTimes;
     using HM.HM5.A.E.O.Interfaces.Results.SurgeonOperatingRoomDayAssignments;
     using HM.HM5.A.E.O.Interfaces.Results.SurgeonScenarioNumberPatients;
-
+    
     internal sealed class HM5OutputContext : IHM5OutputContext
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -143,9 +145,11 @@
 
             // z(s, t) 
             Interfaces.Results.SurgeonDayAssignments.Iz z = HM5Model.z.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreatezResultElementFactory(),
                 resultsAbstractFactory.CreatezFactory(),
-                HM5Model.st);
+                HM5Model.s,
+                HM5Model.t);
 
             this.SurgeonDayAssignments = z
                 .GetValueForOutputContext(
@@ -350,6 +354,6 @@
 
         public ImmutableList<Tuple<Organization, Location, FhirDateTime, INullableValue<bool>>> SurgeonOperatingRoomDayAssignments { get; }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<bool>>> SurgeonDayAssignments { get; }
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<bool>>> SurgeonDayAssignments { get; }
     }
 }
