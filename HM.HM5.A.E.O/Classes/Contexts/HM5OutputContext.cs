@@ -63,9 +63,11 @@
 
             // IHat(t, Λ)
             this.DayScenarioRecoveryWardCensuses = HM5Model.IHat.GetElementsAt(
+                dependenciesAbstractFactory.CreateRedBlackTreeFactory(),
                 resultElementsAbstractFactory.CreateIHatResultElementFactory(),
                 resultsAbstractFactory.CreateIHatFactory(),
-                HM5Model.tΛ)
+                HM5Model.t,
+                HM5Model.Λ)
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory());
 
@@ -318,7 +320,7 @@
 
         public INullableValue<decimal> Gap { get; }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardCensuses { get; }
+        public RedBlackTree<FhirDateTime, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardCensuses { get; }
 
         public long NumberOfExploredNodes { get; }
 
