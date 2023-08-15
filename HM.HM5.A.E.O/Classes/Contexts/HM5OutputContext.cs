@@ -316,6 +316,16 @@
                 scenarioUnutilizedTimes)
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory());
+
+            // α(r, d1, d2)
+            this.OperatingRoomDayDaySwapAssignments = HM5Model.α.GetElementsAt(
+                resultElementsAbstractFactory.CreateαResultElementFactory(),
+                resultsAbstractFactory.CreateαFactory(),
+                HM5Model.d1,
+                HM5Model.d2,
+                HM5Model.r)
+                .GetValueForOutputContext(
+                dependenciesAbstractFactory.CreateNullableValueFactory());
         }
 
         public INullableValue<decimal> BestBound { get; }
@@ -363,5 +373,7 @@
         public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> SurgeonOperatingRoomDayAssignments { get; }
 
         public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<bool>>> SurgeonDayAssignments { get; }
+
+        public RedBlackTree<Location, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<bool>>>> OperatingRoomDayDaySwapAssignments { get; }
     }
 }
