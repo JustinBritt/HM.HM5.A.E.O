@@ -18,5 +18,20 @@
         }
 
         public VariableCollection<IrIndexElement, Id1IndexElement, Id2IndexElement> Value { get; }
+
+        public bool GetElementAt(
+            IrIndexElement rIndexElement,
+            Id1IndexElement d1IndexElement,
+            Id2IndexElement d2IndexElement)
+        {
+            bool value = false;
+
+            if (this.Value[rIndexElement, d1IndexElement, d2IndexElement].Value.IsAlmost(1))
+            {
+                value = true;
+            }
+
+            return value;
+        }
     }
 }

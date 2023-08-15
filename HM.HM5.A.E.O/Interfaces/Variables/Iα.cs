@@ -7,5 +7,10 @@
     public interface Iα
     {
         VariableCollection<IrIndexElement, Id1IndexElement, Id2IndexElement> Value { get; }
+
+        bool GetElementAt(
+            IrIndexElement rIndexElement,
+            Id1IndexElement d1IndexElement,
+            Id2IndexElement d2IndexElement);
     }
 }
