@@ -11,6 +11,7 @@
     using HM.HM5.A.E.O.Factories.Results.Gap;
     using HM.HM5.A.E.O.Factories.Results.NumberOfExploredNodes;
     using HM.HM5.A.E.O.Factories.Results.ObjectiveValue;
+    using HM.HM5.A.E.O.Factories.Results.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.Factories.Results.OverallWallTime;
     using HM.HM5.A.E.O.Factories.Results.ScenarioNumberPatients;
     using HM.HM5.A.E.O.Factories.Results.ScenarioTotalTimes;
@@ -33,6 +34,7 @@
     using HM.HM5.A.E.O.InterfacesFactories.Results.Gap;
     using HM.HM5.A.E.O.InterfacesFactories.Results.NumberOfExploredNodes;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ObjectiveValue;
+    using HM.HM5.A.E.O.InterfacesFactories.Results.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Results.OverallWallTime;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ScenarioNumberPatients;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ScenarioTotalTimes;
@@ -495,6 +497,24 @@
             try
             {
                 factory = new zFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
+        public IαFactory CreateαFactory()
+        {
+            IαFactory factory = null;
+
+            try
+            {
+                factory = new αFactory();
             }
             catch (Exception exception)
             {

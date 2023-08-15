@@ -7,6 +7,7 @@
     using HM.HM5.A.E.O.InterfacesFactories.Results.Gap;
     using HM.HM5.A.E.O.InterfacesFactories.Results.NumberOfExploredNodes;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ObjectiveValue;
+    using HM.HM5.A.E.O.InterfacesFactories.Results.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Results.OverallWallTime;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ScenarioNumberPatients;
     using HM.HM5.A.E.O.InterfacesFactories.Results.ScenarioTotalTimes;
@@ -73,5 +74,7 @@
         IxHatFactory CreatexHatFactory();
 
         IzFactory CreatezFactory();
+
+        IαFactory CreateαFactory();
     }
 }
