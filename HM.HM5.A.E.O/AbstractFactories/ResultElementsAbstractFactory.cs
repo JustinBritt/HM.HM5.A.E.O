@@ -7,6 +7,7 @@
     using HM.HM5.A.E.O.Factories.ResultElements.DayScenarioExpectedBedShortages;
     using HM.HM5.A.E.O.Factories.ResultElements.DayScenarioRecoveryWardCensuses;
     using HM.HM5.A.E.O.Factories.ResultElements.DayScenarioRecoveryWardUtilizations;
+    using HM.HM5.A.E.O.Factories.ResultElements.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.Factories.ResultElements.ScenarioNumberPatients;
     using HM.HM5.A.E.O.Factories.ResultElements.ScenarioTotalExpectedBedShortages;
     using HM.HM5.A.E.O.Factories.ResultElements.ScenarioTotalTimes;
@@ -25,6 +26,7 @@
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioExpectedBedShortages;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioRecoveryWardCensuses;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioRecoveryWardUtilizations;
+    using HM.HM5.A.E.O.InterfacesFactories.ResultElements.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioNumberPatients;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioTotalExpectedBedShortages;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioTotalTimes;
@@ -379,6 +381,24 @@
             try
             {
                 factory = new zResultElementFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
+        public IαResultElementFactory CreateαResultElementFactory()
+        {
+            IαResultElementFactory factory = null;
+
+            try
+            {
+                factory = new αResultElementFactory();
             }
             catch (Exception exception)
             {

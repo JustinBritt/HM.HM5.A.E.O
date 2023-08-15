@@ -3,6 +3,7 @@
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioExpectedBedShortages;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioRecoveryWardCensuses;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.DayScenarioRecoveryWardUtilizations;
+    using HM.HM5.A.E.O.InterfacesFactories.ResultElements.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioNumberPatients;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioTotalExpectedBedShortages;
     using HM.HM5.A.E.O.InterfacesFactories.ResultElements.ScenarioTotalTimes;
@@ -57,5 +58,7 @@
         IxHatResultElementFactory CreatexHatResultElementFactory();
 
         IzResultElementFactory CreatezResultElementFactory();
+
+        IαResultElementFactory CreateαResultElementFactory();
     }
 }
