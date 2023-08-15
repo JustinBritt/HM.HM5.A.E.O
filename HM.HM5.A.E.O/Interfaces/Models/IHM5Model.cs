@@ -63,6 +63,8 @@
 
         IΩ Ω { get; }
 
+        Iα α { get; }
+
         IIHat IHat { get; }
 
         IxHat xHat { get; }
