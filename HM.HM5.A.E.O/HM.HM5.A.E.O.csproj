@@ -34,9 +34,4 @@
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Factories\Results\OperatingRoomDayDaySwapAssignments\" />
-    <Folder Include="InterfacesFactories\Results\OperatingRoomDayDaySwapAssignments\" />
-  </ItemGroup>
 </Project>
