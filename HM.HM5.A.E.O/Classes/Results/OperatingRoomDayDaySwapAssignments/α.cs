@@ -11,7 +11,7 @@
     using HM.HM5.A.E.O.Interfaces.ResultElements.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.Interfaces.Results.OperatingRoomDayDaySwapAssignments;
     using HM.HM5.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
-    // using HM.HM5.A.E.O.InterfacesVisitors.Results.OperatingRoomDayDaySwapAssignments;
+    using HM.HM5.A.E.O.InterfacesVisitors.Results.OperatingRoomDayDaySwapAssignments;
 
     internal sealed class α : Iα
     {
@@ -33,20 +33,18 @@
             return this.Value[rIndexElement][d1IndexElement][d2IndexElement].Value ? 1 : 0;
         }
 
-        public RedBlackTree<Location, RedBlackTree<FhirDateTime, RedBlackTree<FhirDateTime, INullableValue<bool>>>> GetValueForOutputContext(
+        public RedBlackTree<Location, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<bool>>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            //IαOuterVisitor<IrIndexElement, RedBlackTree<Id1IndexElement, RedBlackTree<Id2IndexElement, IαResultElement>>> αOuterVisitor = new HM.HM5.A.E.O.Visitors.Results.OperatingRoomDayDaySwapAssignments.αOuterVisitor<IrIndexElement, RedBlackTree<Id1IndexElement, RedBlackTree<Id2IndexElement, IαResultElement>>>(
-            //    nullableValueFactory,
-            //    new HM.HM5.A.E.O.Classes.Comparers.FhirDateTimeComparer(),
-            //    new HM.HM5.A.E.O.Classes.Comparers.LocationComparer());
+            IαOuterVisitor<IrIndexElement, RedBlackTree<Id1IndexElement, RedBlackTree<Id2IndexElement, IαResultElement>>> αOuterVisitor = new HM.HM5.A.E.O.Visitors.Results.OperatingRoomDayDaySwapAssignments.αOuterVisitor<IrIndexElement, RedBlackTree<Id1IndexElement, RedBlackTree<Id2IndexElement, IαResultElement>>>(
+                nullableValueFactory,
+                new HM.HM5.A.E.O.Classes.Comparers.LocationComparer(),
+                new HM.HM5.A.E.O.Classes.Comparers.NullableValueintComparer());
 
-            //this.Value.AcceptVisitor(
-            //    αOuterVisitor);
+            this.Value.AcceptVisitor(
+                αOuterVisitor);
 
-            //return αOuterVisitor.RedBlackTree;
-
-            return null;
+            return αOuterVisitor.RedBlackTree;
         }
     }
 }

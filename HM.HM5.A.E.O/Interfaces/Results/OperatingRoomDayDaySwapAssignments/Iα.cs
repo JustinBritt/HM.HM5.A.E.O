@@ -17,7 +17,7 @@
             Id1IndexElement d1IndexElement,
             Id2IndexElement d2IndexElement);
 
-        RedBlackTree<Location, RedBlackTree<FhirDateTime, RedBlackTree<FhirDateTime, INullableValue<bool>>>> GetValueForOutputContext(
+        RedBlackTree<Location, RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<bool>>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory);
     }
 }
