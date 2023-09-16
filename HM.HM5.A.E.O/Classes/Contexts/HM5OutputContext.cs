@@ -237,7 +237,9 @@
 
             this.DayScenarioExpectedBedShortages = EBS
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                HM5Model.t,
+                HM5Model.Λ);
 
             // TEBS(Λ)
             Interfaces.Results.ScenarioTotalExpectedBedShortages.ITEBS TEBS_Λ = calculationsAbstractFactory.CreateTEBSΛCalculationFactory().Create()
