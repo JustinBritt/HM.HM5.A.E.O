@@ -1,7 +1,6 @@
 ﻿namespace HM.HM5.A.E.O.Classes.Contexts
 {
     using System;
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
@@ -376,7 +375,7 @@
 
         public RedBlackTree<INullableValue<int>, INullableValue<decimal>> ScenarioTotalExpectedBedShortages { get; }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardUtilizationVariances { get; }
+        public RedBlackTree<FhirDateTime, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardUtilizationVariances { get; }
 
         public RedBlackTree<Organization, RedBlackTree<Location, RedBlackTree<FhirDateTime, INullableValue<bool>>>> SurgeonOperatingRoomDayAssignments { get; }
 
