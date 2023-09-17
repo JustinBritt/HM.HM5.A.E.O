@@ -114,7 +114,9 @@
                 xHat);
             
             this.SurgeonScenarioNumberPatients = surgeonScenarioNumberPatients.GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                HM5Model.s,
+                HM5Model.Λ);
 
             // ScenarioNumberPatients(Λ)
             this.ScenarioNumberPatients = calculationsAbstractFactory.CreateScenarioNumberPatientsCalculationFactory().Create()
