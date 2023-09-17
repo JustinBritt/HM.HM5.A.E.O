@@ -226,7 +226,9 @@
 
             this.DayScenarioRecoveryWardUtilizationVariances = varianceI
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                HM5Model.t,
+                HM5Model.Λ);
 
             // EBS(t, Λ)
             Interfaces.Results.DayScenarioExpectedBedShortages.IEBS EBS = calculationsAbstractFactory.CreateEBSCalculationFactory().Create()
