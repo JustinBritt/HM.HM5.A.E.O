@@ -18,6 +18,8 @@
 
         RedBlackTree<FhirDateTime, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> DayScenarioRecoveryWardCensuses { get; }
 
+        bool IsFeasible { get; }
+
         long NumberOfExploredNodes { get; }
 
         INullableValue<decimal> ObjectiveValue { get; }

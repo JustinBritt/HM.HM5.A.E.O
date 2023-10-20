@@ -74,15 +74,15 @@
                         if (solution?.ModelStatus == OPTANO.Modeling.Optimization.Solver.ModelStatus.Feasible)
                         {
                             model.Model.VariableCollections.ForEach(vc => vc.SetVariableValues(solution.VariableValues));
-
-                            HM5OutputContext = contextsAbstractFactory.CreateHM5OutputContextFactory().Create(
-                                calculationsAbstractFactory,
-                                dependenciesAbstractFactory,
-                                resultElementsAbstractFactory,
-                                resultsAbstractFactory,
-                                model,
-                                solution);
                         }
+
+                        HM5OutputContext = contextsAbstractFactory.CreateHM5OutputContextFactory().Create(
+                            calculationsAbstractFactory,
+                            dependenciesAbstractFactory,
+                            resultElementsAbstractFactory,
+                            resultsAbstractFactory,
+                            model,
+                            solution);
                     }
                 }
 
